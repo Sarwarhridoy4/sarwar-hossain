@@ -1,6 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 /* styles/globals.css */
 :root {
@@ -17,6 +15,7 @@
     text-transform: uppercase;
     background: linear-gradient(90deg, #e0a500, #f7d200, #fdd700, #cc6d00);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     animation: gradient-mask 3s infinite linear;
 }
