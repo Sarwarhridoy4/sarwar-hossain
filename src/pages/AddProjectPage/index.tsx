@@ -292,6 +292,7 @@ const AddProject: React.FC = () => {
         </div>
 
         <button
+          name='submit'
           type='submit'
           disabled={loading}
           className='w-full bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded focus:outline-none'

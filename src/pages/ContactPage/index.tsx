@@ -121,6 +121,7 @@ const ContactPage: React.FC = () => {
                   />
                   <div>
                     <button
+                      name='sent-message'
                       type='submit'
                       className='w-full p-3 text-white transition border rounded border-primary bg-primary hover:bg-opacity-90'
                     >

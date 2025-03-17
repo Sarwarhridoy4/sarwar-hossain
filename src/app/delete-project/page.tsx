@@ -120,6 +120,7 @@ const DeleteProjectPage: React.FC = () => {
                 GitHub Link
               </a>
               <button
+                name="delete-project"
                 className='w-full py-2 px-4 bg-red-600 text-white rounded hover:bg-red-700 dark:bg-red-700 dark:hover:bg-red-800'
                 onClick={() => handleDeleteClick(project?._id)}
               >
@@ -142,6 +143,7 @@ const DeleteProjectPage: React.FC = () => {
               )}
               <div className='flex justify-center space-x-4'>
                 <button
+                  name="confirm-delete"
                   className='py-2 px-4 bg-red-600 text-white rounded hover:bg-red-700 disabled:bg-gray-400 dark:bg-red-700 dark:hover:bg-red-800'
                   onClick={() => handleConfirmDelete(selectedProjectId!)}
                   disabled={loading}
@@ -149,6 +151,7 @@ const DeleteProjectPage: React.FC = () => {
                   {loading ? "Deleting..." : "Yes, Delete"}
                 </button>
                 <button
+                  name="cancel-delete"
                   className='py-2 px-4 bg-gray-400 text-white rounded hover:bg-gray-500 dark:bg-gray-600 dark:hover:bg-gray-700'
                   onClick={handleCancelDelete}
                 >

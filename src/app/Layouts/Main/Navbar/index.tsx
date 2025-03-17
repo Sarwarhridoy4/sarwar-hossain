@@ -79,6 +79,7 @@ const Navbar: React.FC = () => {
               About
             </Link>
             <button
+              name="theme-switcher"
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
               className='p-2 rounded-full bg-gray-200 dark:bg-gray-700'
             >
@@ -93,6 +94,7 @@ const Navbar: React.FC = () => {
           {/* Mobile Menu Button */}
           <div className='flex md:hidden'>
             <button
+              name="mobile-menu-button"
               onClick={toggleMenu}
               className='text-gray-700 dark:text-gray-300 hover:text-yellow-600 dark:hover:text-blue-400 focus:outline-none'
             >
@@ -147,6 +149,7 @@ const Navbar: React.FC = () => {
               About
             </Link>
             <button
+              name="theme-switcher"
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
               className='flex items-center px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md'
             >
