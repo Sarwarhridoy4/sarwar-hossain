@@ -96,6 +96,10 @@ const HeroSection: React.FC = () => {
         <div className='w-full mx-auto'>
           <div className='flex flex-col md:flex-row gap-3 items-center justify-between my-20'>
             <div className='w-40'>
+              <label htmlFor='role' className='sr-only'>
+                Select Role
+              </label>{" "}
+              {/* Hidden label */}
               <select
                 name='role'
                 value={selectedRole}
