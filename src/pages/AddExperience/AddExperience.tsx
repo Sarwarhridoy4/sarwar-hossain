@@ -143,9 +143,7 @@ const AddExperienceContainer: React.FC = () => {
             {...register("link", { required: "Link is required" })}
           />
           {errors.link && (
-            <p className='text-red-500 text-sm mt-1'>
-              {errors.link.message}
-            </p>
+            <p className='text-red-500 text-sm mt-1'>{errors.link.message}</p>
           )}
         </div>
 
@@ -162,6 +160,7 @@ const AddExperienceContainer: React.FC = () => {
         </div>
 
         <button
+          name='submit'
           type='submit'
           className='w-full bg-yellow-500 text-white py-2 px-4 rounded-md hover:bg-yellow-600 dark:bg-yellow-700 dark:hover:bg-yellow-800'
         >

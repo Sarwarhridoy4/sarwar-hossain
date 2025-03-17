@@ -82,8 +82,8 @@ const HeroSection: React.FC = () => {
   return (
     <React.Fragment>
       <div className='w-full absolute top-0 z-[1000000000000000]'>
-          {banner && <HBanner setBanner={setBanner} />}
-        </div>
+        {banner && <HBanner setBanner={setBanner} />}
+      </div>
       <div className='grid grid-cols-1 gap-8 p-8 md:grid-cols-2 lg:grid-cols-2'>
         <div className='flex flex-col justify-center space-y-4'>
           <h1 className='masked-text'>I&apos;m Sarwar Hossain</h1>
@@ -112,12 +112,16 @@ const HeroSection: React.FC = () => {
             </div>
 
             <Link href='/contact'>
-              <button className='w-40 h-10 uppercase border-2 border-yellow-600 text-yellow-600 bg-transparent rounded-md hover:bg-yellow-600 hover:text-white transition duration-300'>
+              <button
+                name='contact-me'
+                className='w-40 h-10 uppercase border-2 border-yellow-600 text-yellow-600 bg-transparent rounded-md hover:bg-yellow-600 hover:text-white transition duration-300'
+              >
                 contact me
               </button>
             </Link>
 
             <button
+              name='get-app'
               onClick={() => downloadAppFromGoogleDrive(appDriveLink)}
               className='w-40 h-10 uppercase border-2 border-yellow-600 text-yellow-600 bg-transparent rounded-md hover:bg-yellow-600 hover:text-white transition duration-300'
             >
