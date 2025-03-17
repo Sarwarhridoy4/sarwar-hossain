@@ -33,7 +33,7 @@ const Skills: React.FC = () => {
 
   return (
     <>
-      <h4 className='masked-text text-left p-8'>Skills</h4>
+      <h1 className='masked-text text-left p-8'>Skills</h1>
       <div className='max-w-lg mx-auto w-full'>
         <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6'>
           {skills.map((skill, index) => (
