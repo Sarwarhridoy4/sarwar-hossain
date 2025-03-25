@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
 import { RiCloseLine } from "react-icons/ri";
-import { MagicElement } from "react-magic-cursor";
 
 interface Hadith {
   hadith: string;
@@ -64,17 +63,15 @@ export default function HBanner({ setBanner }: HBannerProps) {
         )}
       </div>
       <div className='flex flex-1 justify-end'>
-        <MagicElement type='outline' color='#EAB308' offset={5}>
-          <button
-            name='close-banner'
-            onClick={() => setBanner(false)}
-            type='button'
-            className='-m-3 p-3 focus-visible:outline-offset-[-4px]'
-          >
-            <span className='sr-only'>Dismiss</span>
-            <RiCloseLine className='h-5 w-5 text-gray-900' aria-hidden='true' />
-          </button>
-        </MagicElement>
+        <button
+          name='close-banner'
+          onClick={() => setBanner(false)}
+          type='button'
+          className='-m-3 p-3 focus-visible:outline-offset-[-4px]'
+        >
+          <span className='sr-only'>Dismiss</span>
+          <RiCloseLine className='h-5 w-5 text-gray-900' aria-hidden='true' />
+        </button>
       </div>
     </div>
   );
