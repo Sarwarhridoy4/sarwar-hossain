@@ -1,6 +1,4 @@
-"use client";
 import React from "react";
-import { MagicElement } from "react-magic-cursor";
 interface ContactInputBoxProps {
   type: string;
   placeholder: string;
@@ -22,11 +20,9 @@ const ContactPage: React.FC = () => {
           <div className='flex flex-wrap -mx-4 lg:justify-between'>
             <div className='w-full px-4 lg:w-1/2 xl:w-6/12'>
               <div className='mb-12 max-w-[570px] lg:mb-0'>
-                <MagicElement type='underline' color='#EAB308'>
-                  <h2 className='mb-6 text-[32px] font-bold uppercase text-dark sm:text-[40px] lg:text-[36px] xl:text-[40px]'>
-                    GET IN TOUCH WITH ME
-                  </h2>
-                </MagicElement>
+                <h2 className='mb-6 text-[32px] font-bold uppercase text-dark sm:text-[40px] lg:text-[36px] xl:text-[40px]'>
+                  GET IN TOUCH WITH ME
+                </h2>
                 <p className='text-base leading-relaxed mb-9 text-body-color'>
                   Feel free to get in touch with me
                 </p>
