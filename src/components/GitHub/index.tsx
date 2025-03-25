@@ -2,7 +2,6 @@
 "use client";
 import { motion } from "motion/react";
 import React from "react";
-import { MagicElement } from "react-magic-cursor";
 
 const Github: React.FC = () => {
   const username = process.env.NEXT_PUBLIC_GITHUB_USERNAME;
@@ -28,39 +27,33 @@ const Github: React.FC = () => {
 
       <div className='flex flex-col gap-7 items-center justify-center'>
         <div className='w-96'>
-          <MagicElement type='outline' color='#EAB308' offset={5}>
-            <img
-              src={`https://github-readme-streak-stats.herokuapp.com/?user=${username}`}
-              alt='GitHub Streak Stats'
-              width={400}
-              height={200}
-              className='rounded-md'
-            />
-          </MagicElement>
+          <img
+            src={`https://github-readme-streak-stats.herokuapp.com/?user=${username}`}
+            alt='GitHub Streak Stats'
+            width={400}
+            height={200}
+            className='rounded-md'
+          />
         </div>
 
         <div className='w-96'>
-          <MagicElement type='outline' color='#EAB308' offset={5}>
-            <img
-              src={`https://github-readme-stats.vercel.app/api/top-langs?username=${username}&show_icons=true&locale=en&layout=compact`}
-              alt='GitHub Top Languages'
-              width={400}
-              height={200}
-              className='rounded-md'
-            />
-          </MagicElement>
+          <img
+            src={`https://github-readme-stats.vercel.app/api/top-langs?username=${username}&show_icons=true&locale=en&layout=compact`}
+            alt='GitHub Top Languages'
+            width={400}
+            height={200}
+            className='rounded-md'
+          />
         </div>
 
         <div className='w-96'>
-          <MagicElement type='outline' color='#EAB308' offset={5}>
-            <img
-              src={`https://github-readme-stats.vercel.app/api?username=${username}&show_icons=true&locale=en`}
-              alt='GitHub Profile Stats'
-              width={400}
-              height={200}
-              className='rounded-md'
-            />
-          </MagicElement>
+          <img
+            src={`https://github-readme-stats.vercel.app/api?username=${username}&show_icons=true&locale=en`}
+            alt='GitHub Profile Stats'
+            width={400}
+            height={200}
+            className='rounded-md'
+          />
         </div>
       </div>
     </React.Fragment>

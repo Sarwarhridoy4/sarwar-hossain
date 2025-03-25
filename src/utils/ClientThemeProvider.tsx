@@ -1,9 +1,9 @@
 "use client";
+
+import SnowflakeCursor from "@/components/SnowflakeCursor/SnowflakeCursor";
 import { ThemeProvider } from "next-themes";
-import { MagicCursor, MagicCursorProvider } from "react-magic-cursor";
 import React, { useEffect, useState } from "react";
 import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.min.css";
 
 export default function ClientThemeProvider({
   children,
@@ -22,13 +22,11 @@ export default function ClientThemeProvider({
 
   return (
     <ThemeProvider attribute='class'>
-      <MagicCursorProvider thickness={2}>
-        <div className='bg-slate-100 dark:bg-gray-900 shadow-lg'>
-          <MagicCursor />
-          <ToastContainer />
-          {children}
-        </div>
-      </MagicCursorProvider>
+      <div className='bg-slate-100 dark:bg-gray-900 shadow-lg'>
+        <ToastContainer />
+        <SnowflakeCursor />
+        {children}
+      </div>
     </ThemeProvider>
   );
 }
