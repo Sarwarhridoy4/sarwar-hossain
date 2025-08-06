@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
+import { X } from "lucide-react";
 import { useEffect, useState } from "react";
-import { RiCloseLine } from "react-icons/ri";
+
 
 interface Hadith {
   hadith: string;
@@ -70,7 +71,7 @@ export default function HBanner({ setBanner }: HBannerProps) {
           className='-m-3 p-3 focus-visible:outline-offset-[-4px]'
         >
           <span className='sr-only'>Dismiss</span>
-          <RiCloseLine className='h-5 w-5 text-gray-900' aria-hidden='true' />
+          <X className='h-5 w-5 text-gray-900' aria-hidden='true' />
         </button>
       </div>
     </div>
