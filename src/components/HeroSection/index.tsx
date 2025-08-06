@@ -98,9 +98,9 @@ const HeroSection: React.FC = () => {
             <div className='w-40'>
               <label htmlFor='role' className='sr-only'>
                 Select Role
-              </label>{" "}
-              {/* Hidden label */}
+              </label>
               <select
+                id='role'
                 name='role'
                 value={selectedRole}
                 onChange={handleRoleChange}

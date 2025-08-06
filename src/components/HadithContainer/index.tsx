@@ -25,7 +25,7 @@ export default function HBanner({ setBanner }: HBannerProps) {
   }, []);
 
   return (
-    <div className='relative isolate flex items-center gap-x-6 overflow-hidden bg-gray-50 px-6 py-2.5 sm:px-3.5 sm:before:flex-1'>
+    <div className='relative isolate flex items-center gap-x-6 overflow-hidden bg-white/20 backdrop-blur-md border border-white/30 rounded-xl shadow-md px-6 py-2.5 sm:px-3.5 sm:before:flex-1'>
       <div
         className='absolute left-[max(-7rem,calc(50%-52rem))] top-1/2 -z-10 -translate-y-1/2 transform-gpu blur-2xl'
         aria-hidden='true'

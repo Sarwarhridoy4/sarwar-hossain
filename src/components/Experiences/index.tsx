@@ -1,10 +1,19 @@
 "use client";
-import { Carousel } from "react-responsive-carousel";
-import "react-responsive-carousel/lib/styles/carousel.min.css";
-import Image from "next/image";
-import { useEffect, useState } from "react";
+
+import { useEffect, useState, useCallback } from "react";
 import axios, { AxiosError } from "axios";
+import useEmblaCarousel from "embla-carousel-react";
+import Image from "next/image";
 import Link from "next/link";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Skeleton } from "@/components/ui/skeleton";
+import { Alert, AlertDescription } from "@/components/ui/alert";
 
 interface Experience {
   _id: string;
@@ -21,14 +30,15 @@ const Experiences: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  const fetchExperiences = async () => {
+  const [emblaRef] = useEmblaCarousel({ loop: true });
+
+  const fetchExperiences = useCallback(async () => {
     try {
       const response = await axios.get(
         `${process.env.NEXT_PUBLIC_ENDPOINT_PORTFOLIO}/experiences`
       );
       setExperiences(response.data);
     } catch (err) {
-      // Type the error as AxiosError to access Axios-specific properties
       if (err instanceof AxiosError) {
         setError(err.response?.data?.message || "Error fetching experiences");
       } else {
@@ -37,87 +47,74 @@ const Experiences: React.FC = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
 
   useEffect(() => {
     fetchExperiences();
-  }, []);
+  }, [fetchExperiences]);
 
   if (loading) {
     return (
-      <div className='w-full flex items-center justify-center my-10'>
-        <p className='text-lg text-gray-500'>Loading experiences...</p>
+      <div className='flex justify-center mt-10'>
+        <Skeleton className='h-64 w-[90%] rounded-xl' />
       </div>
     );
   }
 
   if (error) {
     return (
-      <div className='w-full flex items-center justify-center my-10'>
-        <p className='text-lg text-red-500'>{error}</p>
+      <div className='flex justify-center mt-10'>
+        <Alert variant='destructive'>
+          <AlertDescription>{error}</AlertDescription>
+        </Alert>
       </div>
     );
   }
 
   return (
-    <div className='w-full flex items-center justify-center flex-col my-10'>
-      <h1 className='text-2xl md:text-3xl lg:text-4xl font-semibold text-center text-gray-900 dark:text-white'>
+    <section className='w-full py-10'>
+      <h2 className='text-center text-3xl font-bold mb-8 text-gray-900 dark:text-white'>
         Experiences
-      </h1>
-      <div className='w-4/5 mx-auto'>
-        <Carousel
-          showArrows
-          emulateTouch
-          autoPlay
-          infiniteLoop
-          interval={5000}
-          showThumbs={false}
-          showIndicators={false}
-          showStatus={false}
-        >
-          {experiences.map((experience) => (
-            <div
-              key={experience._id}
-              className='max-w-md mx-auto py-4 px-8 bg-violet-800 shadow-lg rounded-lg my-10'
+      </h2>
+
+      <div className='overflow-hidden max-w-6xl mx-auto py-10' ref={emblaRef}>
+        <div className='flex gap-6'>
+          {experiences.map((exp) => (
+            <Card
+              key={exp._id}
+              className='min-w-[90%] md:min-w-[60%] lg:min-w-[40%] mx-auto bg-violet-900 text-white'
             >
-              <div className='w-20 h-20 bg-violet-700 rounded-full flex items-center justify-center'>
-                <Image
-                  src={experience.imageUrl}
-                  alt={`company_logo_${experience.company}`}
-                  width={80}
-                  height={80}
-                  className='rounded-full'
-                />
-              </div>
-              <div className='mt-4'>
-                <h2 className='text-white text-xl md:text-2xl lg:text-3xl font-semibold'>
-                  {experience.title}
-                </h2>
-                <p className='mt-2 text-slate-50 text-sm md:text-md'>
-                  Company: {experience.company}
-                </p>
-                <p className='mt-2 text-slate-50 text-sm md:text-md'>
-                  Span: {experience.span}
-                </p>
-                <p className='mt-2 text-slate-50 text-sm md:text-md'>
-                  Location: {experience.location}
-                </p>
-              </div>
-              <div className='flex justify-end mt-4'>
-                <Link
-                  href={experience.link}
-                  target='_blank'
-                  rel='noopener noreferrer'
-                  className='text-md md:text-xl font-medium text-indigo-300'
-                >
-                  Details
-                </Link>
-              </div>
-            </div>
+              <CardHeader className='flex flex-row items-center gap-4'>
+                <div className='w-16 h-16 rounded-full overflow-hidden bg-violet-700'>
+                  <Image
+                    src={exp.imageUrl}
+                    alt={exp.company}
+                    width={64}
+                    height={64}
+                    className='rounded-full object-cover'
+                  />
+                </div>
+                <div>
+                  <CardTitle className='text-lg'>{exp.title}</CardTitle>
+                  <p className='text-sm text-gray-300'>{exp.company}</p>
+                </div>
+              </CardHeader>
+              <CardContent className='space-y-2'>
+                <p className='text-sm'>📍 {exp.location}</p>
+                <p className='text-sm'>🗓️ {exp.span}</p>
+                <div className='pt-3 text-right'>
+                  <Button asChild variant='link' className='text-indigo-300 p-0'>
+                    <Link href={exp.link} target='_blank' rel='noopener noreferrer'>
+                      View Details
+                    </Link>
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
           ))}
-        </Carousel>
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 

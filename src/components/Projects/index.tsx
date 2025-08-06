@@ -1,9 +1,6 @@
-"use client";
-import axios from "axios";
-import { useEffect, useState, useRef } from "react";
-import anime from "animejs";
-import LoadingAnimation from "../Loading";
-import EachProject from "../EachProject";
+// app/projects/page.tsx
+import EachProject from "@/components/EachProject";
+// import ""
 
 export interface Image {
   public_id: string;
@@ -20,34 +17,24 @@ type Project = {
   images: Image[];
 };
 
-const Projects: React.FC = () => {
-  const [projects, setProjects] = useState<Project[]>([]);
-  const radarRef = useRef<HTMLDivElement | null>(null);
+const getProjects = async (): Promise<Project[]> => {
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_ENDPOINT_PORTFOLIO}/projects`,
+      {
+        cache: "force-cache", // Ensure SSR fresh data
+      }
+    );
+    if (!res.ok) throw new Error("Failed to fetch");
+    return res.json();
+  } catch (error) {
+    console.error("SSR fetch error:", error);
+    return [];
+  }
+};
 
-  useEffect(() => {
-    const getProjectsUrl = `${process.env.NEXT_PUBLIC_ENDPOINT_PORTFOLIO}/projects`;
-
-    // Making a GET request using Axios
-    axios
-      .get(getProjectsUrl)
-      .then((response) => {
-        setProjects(response.data);
-      })
-      .catch((error) => {
-        console.error("Error:", error.message);
-      });
-
-    // Radar-like loading animation using anime.js
-    const radarAnimation = anime({
-      targets: radarRef.current,
-      rotate: "360deg",
-      easing: "linear",
-      duration: 2000,
-      loop: true,
-    });
-
-    return () => radarAnimation.pause(); // Cleanup the animation when component unmounts
-  }, []);
+const ProjectsPage = async () => {
+  const projects = await getProjects();
 
   return (
     <div className='w-5/6 mx-auto m-8'>
@@ -55,15 +42,13 @@ const Projects: React.FC = () => {
         Projects
       </h2>
       <div className='my-8'>
-        <div className='flex flex-col md:flex-row gap-1'>
-          {projects?.length === 0 ? (
-            <LoadingAnimation />
+        <div className='w-11/12 mx-auto flex items-center justify-center flex-col md:flex-row gap-5 flex-wrap'>
+          {projects.length === 0 ? (
+            <p>No projects found.</p>
           ) : (
-            <div className='w-11/12 mx-auto flex items-center justify-center flex-col md:flex-row gap-5 flex-wrap'>
-              {projects?.map((project, i) => (
-                <EachProject key={i} project={project as Project} />
-              ))}
-            </div>
+            projects.map((project, i) => (
+              <EachProject key={i} project={project} />
+            ))
           )}
         </div>
       </div>
@@ -71,4 +56,4 @@ const Projects: React.FC = () => {
   );
 };
 
-export default Projects;
+export default ProjectsPage;
