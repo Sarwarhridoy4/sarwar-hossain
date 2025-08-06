@@ -1,0 +1,23 @@
+.animated-path {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: draw 2s ease-in-out infinite alternate;
+}
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Delay each path */
+.delay-0 { animation-delay: 0s; }
+.delay-1 { animation-delay: 0.25s; }
+.delay-2 { animation-delay: 0.5s; }
+.delay-3 { animation-delay: 0.75s; }
+.delay-4 { animation-delay: 1s; }
+.delay-5 { animation-delay: 1.25s; }
+.delay-6 { animation-delay: 1.5s; }
+.delay-7 { animation-delay: 1.75s; }
+.delay-8 { animation-delay: 2s; }
+.delay-9 { animation-delay: 2.25s; }
