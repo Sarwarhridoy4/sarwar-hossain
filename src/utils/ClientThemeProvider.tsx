@@ -1,6 +1,7 @@
 "use client";
 
 import SnowflakeCursor from "@/components/SnowflakeCursor/SnowflakeCursor";
+import { SmoothCursor } from "@/components/ui/smooth-cursor";
 import { ThemeProvider } from "next-themes";
 import React, { useEffect, useState } from "react";
 import { ToastContainer } from "react-toastify";
@@ -25,6 +26,7 @@ export default function ClientThemeProvider({
       <div className='bg-slate-100 dark:bg-gray-900 shadow-lg'>
         <ToastContainer />
         <SnowflakeCursor />
+        <SmoothCursor />
         {children}
       </div>
     </ThemeProvider>
