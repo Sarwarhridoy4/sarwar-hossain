@@ -83,7 +83,7 @@ const Navbar: React.FC = () => {
   const isActive = (href: string) => pathname === href;
 
   return (
-    <nav className='sticky top-0 z-50 bg-transparent backdrop-blur-md p-4'>
+    <nav className='sticky top-0 z-50 bg-transparent p-4'>
       <div className='max-w-6xl mx-auto flex justify-between items-center'>
         <h1 className='font-sacramento text-2xl font-bold text-orange-600 dark:text-orange-400'>
           Sarwar Hossain
