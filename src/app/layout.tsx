@@ -31,6 +31,10 @@ export default function RootLayout({
     <html lang='en'>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${Sacramento.variable} antialiased relative`}
+        style={{
+          background:
+            "radial-gradient(125% 125% at 50% 100%, #000000 40%, #010133 100%)",
+        }}
       >
         <ClientThemeProvider>
           <Navbar />
