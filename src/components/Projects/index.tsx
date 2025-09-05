@@ -22,7 +22,7 @@ const getProjects = async (): Promise<Project[]> => {
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_ENDPOINT_PORTFOLIO}/projects`,
       {
-        cache: "force-cache", // Ensure SSR fresh data
+        cache: "no-cache", // Ensure SSR fresh data
       }
     );
     if (!res.ok) throw new Error("Failed to fetch");
